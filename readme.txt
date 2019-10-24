@@ -1,5 +1,5 @@
 Formulario de Registración
-Contiene lógica de validación y persistencia de datos. 
+Contiene lógica de validación y persistencia de datos.
 //comentado-> también contiene registración en archivo JSON.
 
   Template credits:
