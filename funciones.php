@@ -81,7 +81,7 @@ function buscarUsuarioPorId($id) {
 
 function armarUsuario($datos) {
   return [
-    "id" => proximoId(),
+    "id" => $this->proximoId(),
     "name" => ucfirst($datos["name"]),
     "email" => $datos["email"],
     "birthday" => $datos["birthday"],
@@ -92,7 +92,7 @@ function armarUsuario($datos) {
 }
 
 function proximoId() {
-  $usuarios = traerTodosLosUsuarios();
+  $usuarios = $this->traerTodosLosUsuarios();
 
   // Si no hay usuarios el proximo id es el ultimo
   if (empty($usuarios)) {
@@ -131,20 +131,20 @@ function registrar($usuario) {
   file_put_contents("usuarios.json", $usuariosJSON);
 }
 
-function validateAge($birthday, $age = 18)
-{
-    // $birthday can be UNIX_TIMESTAMP or just a string-date.
-    if(is_string($birthday)) {
-        $birthday = strtotime($birthday);
-    }
-
-    // check
-    // 31536000 is the number of seconds in a 365 days year.
-    if(time() - $birthday < $age * 31536000)  {
-        return false;
-    }
-
-    return true;
-}
+// function validateAge($birthday, $age = 18)
+// {
+//     // $birthday can be UNIX_TIMESTAMP or just a string-date.
+//     if(is_string($birthday)) {
+//         $birthday = strtotime($birthday);
+//     }
+//
+//     // check
+//     // 31536000 is the number of seconds in a 365 days year.
+//     if(time() - $birthday < $age * 31536000)  {
+//         return false;
+//     }
+//
+//     return true;
+// }
 
 ?>

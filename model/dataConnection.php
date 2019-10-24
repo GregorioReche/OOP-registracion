@@ -1,8 +1,9 @@
 <?php
 
 /**
- *
+ * CONECCTION TO THE CLIENTS FILE OR CONNECTION TO THE USERS DATABASE.
  */
+ 
   abstract class DataConnection  {
 
     // function __construct(argument)

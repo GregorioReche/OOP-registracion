@@ -10,8 +10,13 @@ class User {
   private $password;
   private $phone;
 
-  private function sanitize(){
-    //code
+  function __construct($datos){
+
+    $this->name = ucfirst($datos["name"]);
+    $this->email = trim($datos["email"]);
+    $this->gender = $datos["gender"];
+    $this->password = password_hash($datos["password"],PASSWORD_DEFAULT);
+    $this->phone = trim($datos["phone"]);
   }
 
   // Getters and setters
