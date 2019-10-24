@@ -2,18 +2,15 @@
   /**
    *
    */
-  abstract class ClassName extends AnotherClass
-  {
-    private $db;
-    private $errores = array();
+  abstract class Validator {
+    //private $db;
+    protected $errores = array();
 
-    function __construct($db){
-      this->$db = $db;
-    }
+    // function __construct($db){
+    //   $this->$db = $db;
+    // }
 
-    public abstract function validate($datos){
-
-    }
+    public abstract function validate($datos,$connection);
 
   }
 

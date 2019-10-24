@@ -1,8 +1,11 @@
 <?php
 
-require_once("funciones.php");
+//require_once("funciones.php");
+require_once './autoload.php';
+//use model\DCJson;
 
-$usuarios = traerTodosLosUsuarios();
+$connection = new DCJson();
+$usuarios = $connection->traerTodosLosUsuarios();
 
 ?>
 

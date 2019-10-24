@@ -5,8 +5,8 @@
   class ValidatorLogin extends Validator
   {
 
-    public function validate($datos){
-      
+    public function validate($datos,$connection){
+
     }
 
   }

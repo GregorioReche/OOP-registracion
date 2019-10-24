@@ -1,6 +1,7 @@
 <?php
 
-require_once("funciones.php");
+//require_once("funciones.php");
+require_once 'autoload.php';
 
 $nombreDefault = "";
 $telefonoDefault = "";
@@ -12,14 +13,22 @@ $fechaDefault = "";
 if ($_POST) {
 
   // VALIDAR
-  $errores = validarRegistracion($_POST);
+  $connection = new DCJson();
+  $validator = new validatorRegistration($connection);
+  //$errores = validarRegistracion($_POST);
+  $errores = $validator->validate($_POST,$connection);
 
   // SI NO HAY ERRORES
   if (empty($errores)) {
+
     // REGISTRAR
 
-     $usuario = armarUsuario($_POST);
-    registrar($usuario);
+     //$usuario = armarUsuario($_POST);
+
+     $usuario = new User($_POST);
+     // var_dump($usuario);exit;
+    //registrar($usuario);
+    $connection->registrar($usuario);
 
     // REENVIAR AL EXITO
     header("location:listadoUsuarios.php");exit;

@@ -2,13 +2,15 @@
   /**
    *
    */
+  use model\DataConnection;
+
   class ValidatorRegistration extends Validator
   {
 
-    public function validate($datos){
+    public function validate($datos, $connection){
 
 
-      if (strlen($datos["name"]) < 5) {
+      if (strlen($datos["name"]) < 4) {
         $this->errores["name"] = "El nombre de contener más de 4 caracteres.";
       }
 
@@ -43,7 +45,7 @@
       else if (filter_var($datos["email"], FILTER_VALIDATE_EMAIL) == false) {
         $this->errores["email"] = "Debe ingresar un mail válido.";
       }
-      else if (existeElEmail($datos["email"])) {
+      else if ($connection->existeElEmail($datos["email"])) {
         $this->errores["email"] = "Ese email ya esta tomado";
       }
 

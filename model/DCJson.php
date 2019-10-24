@@ -2,6 +2,8 @@
   /**
    * Data Connection implementation for JSON.
    */
+  use model\User;
+
   class DCJson extends DataConnection
   {
 
@@ -15,8 +17,15 @@
       $usuarios = $this->traerTodosLosUsuarios();
 
       foreach ($usuarios as $usuario) {
-        if ($usuario["email"] == $email) {
-          return $usuario;
+        // var_dump($email);
+        echo "<pre>";
+        // var_dump($usuario);
+        echo "</pre>";
+        if (isset($usuario["email"])){
+          if ($usuario["email"] == $email) {
+
+            return $usuario;
+          }
         }
       }
 
@@ -63,27 +72,37 @@
 
     public function registrar($usuario){
       $usuarios = $this->traerTodosLosUsuarios();
-
-      $usuarios[] = $usuario;
+      echo "<pre>";
+      var_dump($usuario);
+      echo "</pre>";
+      $id = $this->proximoId();
+      $usuario->setId($id);
+      echo "<pre>";
+      var_dump($usuario);
+      echo "</pre>";
+      $usuarioArray = $usuario->toArray();
+      var_dump($usuarioArray);
+      $usuarios[] = $usuarioArray;
 
       $usuariosJSON = json_encode($usuarios);
 
       file_put_contents("usuarios.json", $usuariosJSON);
 
+      return $usuario->getId;
     }
-    public function function proximoId(){
-      $usuarios = traerTodosLosUsuarios();
+    public function proximoId(){
+      $usuarios = $this->traerTodosLosUsuarios();
 
       // Si no hay usuarios el proximo id es el ultimo
       if (empty($usuarios)) {
         return 1;
       }
 
-      // obtener ultimo usuario
-      $ultimoUsuario = end($usuarios);
+      // obtener ultimo usuario id
+      $ultimoUsuarioId = count($usuarios);
 
       // Del ultimo usuario obtenemos el id y sumamos uno
-      return $ultimoUsuario["id"] + 1;
+      return $ultimoUsuarioId + 1;
     }
   }
 

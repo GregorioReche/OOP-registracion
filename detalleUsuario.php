@@ -49,7 +49,7 @@ if ($usuario == null) {
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title"><?=$usuario["name"]?></h2>
-                    <h3 class="title"><?=$usuario["birthday"]?></h3>
+                    <!-- <h3 class="title"><?=$usuario["birthday"]?></h3> -->
                     <h3 class="title"><?=$usuario["email"]?></h3>
                     <h3 class="title"><?=$usuario["phone"]?></h3>
                     <h3 class="title"><?=$usuario["gender"]?></h3>

@@ -4,6 +4,7 @@
  */
 class User {
 
+  private $id;
   private $name;
   private $email;
   private $gender;
@@ -11,7 +12,7 @@ class User {
   private $phone;
 
   function __construct($datos){
-
+    // var_dump($datos);exit;
     $this->name = ucfirst($datos["name"]);
     $this->email = trim($datos["email"]);
     $this->gender = $datos["gender"];
@@ -20,6 +21,13 @@ class User {
   }
 
   // Getters and setters
+  public function setId($id){
+    $this->id = $id;
+  }
+
+  public function getId(){
+    return $this->id;
+  }
 
   public function getName(){
     return $this->name;
@@ -52,7 +60,9 @@ class User {
     $this->phone = $phone;
   }
 
-
+  public function toArray(){
+    return get_object_vars($this);
+  }
 
 }
 
