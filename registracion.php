@@ -13,7 +13,8 @@ $fechaDefault = "";
 if ($_POST) {
 
   // VALIDAR
-  $connection = new DCJson();
+  $connection = new DCJson(); 
+
   $validator = new validatorRegistration($connection);
   //$errores = validarRegistracion($_POST);
   $errores = $validator->validate($_POST,$connection);
@@ -34,10 +35,13 @@ if ($_POST) {
     header("location:listadoUsuarios.php");exit;
   }
 
+  // SI SÍ HAY ERRORES:
+
+        // 1- MUESTRO LOS ERRORES.
   foreach ($errores as $error) {
     echo $error . "<br>";
   }
-
+  // 2- ARMO LA PERSISTENCIA
   $nombreDefault = $_POST["name"];
   $telefonoDefault = $_POST["phone"];
   $emailDefault = $_POST["email"];
